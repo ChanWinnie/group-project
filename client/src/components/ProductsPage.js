@@ -19,6 +19,7 @@ const ProductsPage = ({ products, bannerText, bannerImage }) => {
   });
   //console.log(formattedProducts);
 
+  // Sorting formattedProducts array into the orders
   const order = { asc: "asc", des: "des" };
   const sortProducts = (arrOfObjects, key, sortOrder = order.asc) => {
     const arrCopy = [...arrOfObjects];
@@ -36,7 +37,7 @@ const ProductsPage = ({ products, bannerText, bannerImage }) => {
   const descendPrice = sortProducts(formattedProducts, "price", order.des);
   //console.log({ascendPrice, descendPrice})
 
-  //Set array that will be mapped over based on state of sortBy
+  //Set array to the order that will be mapped over based on state of sortBy
   const showPageProducts =
     sortBy === "low"
       ? ascendPrice
@@ -44,6 +45,7 @@ const ProductsPage = ({ products, bannerText, bannerImage }) => {
       ? descendPrice
       : products;
 
+  // Pagination: number of itemsper page
   const productsPerPage = 16;
   const indexOfLastProduct = currentPage * productsPerPage; // 16
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage; // 0
